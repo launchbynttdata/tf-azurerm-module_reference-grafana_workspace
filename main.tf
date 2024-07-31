@@ -36,7 +36,7 @@ module "resource_group" {
   name     = module.resource_names["resource_group"].standard
   location = var.location
 
-  tags = local.tags
+  tags = merge(local.tags, { resource_name = module.resource_names["resource_group"].standard })
 }
 
 module "monitor_workspace" {
@@ -49,7 +49,7 @@ module "monitor_workspace" {
 
   public_network_access_enabled = var.public_network_access_enabled
 
-  tags = local.tags
+  tags = merge(local.tags, { resource_name = module.resource_names["monitor_workspace"].standard })
 
   depends_on = [module.resource_group]
 }
@@ -72,7 +72,7 @@ module "grafana" {
 
   azure_monitor_workspace_ids = [module.monitor_workspace.id]
 
-  tags = local.tags
+  tags = merge(local.tags, { resource_name = module.resource_names["grafana"].standard })
 
   depends_on = [module.monitor_workspace]
 }
