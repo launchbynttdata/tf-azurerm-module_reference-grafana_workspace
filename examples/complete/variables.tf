@@ -25,7 +25,7 @@ variable "resource_names_map" {
       max_length = 80
     }
     grafana = {
-      name       = "grafana"
+      name       = "graf"
       max_length = 22
     }
     monitor_workspace = {
