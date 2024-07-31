@@ -45,6 +45,16 @@ output "monitor_workspace_name" {
   value       = module.monitor_workspace.name
 }
 
+output "monitor_workspace_default_collection_endpoint_id" {
+  description = "Resource ID of the default collection endpoint associated with the monitor workspace"
+  value       = module.monitor_workspace.default_data_collection_endpoint_id
+}
+
+output "monitor_workspace_default_collection_rule_id" {
+  description = "Resource ID of the default collection rule associated with the monitor workspace"
+  value       = module.monitor_workspace.default_data_collection_rule_id
+}
+
 output "resource_group_name" {
   description = "Name of the resource group created by this module"
   value       = length(module.resource_group) > 0 ? module.resource_group[0].name : null
