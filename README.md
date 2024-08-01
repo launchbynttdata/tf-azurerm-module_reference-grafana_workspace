@@ -161,5 +161,7 @@ No resources.
 | <a name="output_grafana_principal_id"></a> [grafana\_principal\_id](#output\_grafana\_principal\_id) | Principal ID of the managed grafana instance |
 | <a name="output_monitor_workspace_id"></a> [monitor\_workspace\_id](#output\_monitor\_workspace\_id) | Resource ID of the Azure Monitor workspace |
 | <a name="output_monitor_workspace_name"></a> [monitor\_workspace\_name](#output\_monitor\_workspace\_name) | Name of the Azure Monitor workspace |
+| <a name="output_monitor_workspace_default_collection_endpoint_id"></a> [monitor\_workspace\_default\_collection\_endpoint\_id](#output\_monitor\_workspace\_default\_collection\_endpoint\_id) | Resource ID of the default collection endpoint associated with the monitor workspace |
+| <a name="output_monitor_workspace_default_collection_rule_id"></a> [monitor\_workspace\_default\_collection\_rule\_id](#output\_monitor\_workspace\_default\_collection\_rule\_id) | Resource ID of the default collection rule associated with the monitor workspace |
 | <a name="output_resource_group_name"></a> [resource\_group\_name](#output\_resource\_group\_name) | Name of the resource group created by this module |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

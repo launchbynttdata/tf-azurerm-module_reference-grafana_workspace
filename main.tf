@@ -65,6 +65,7 @@ module "grafana" {
   api_key_enabled                   = var.grafana_api_key_enabled
   deterministic_outbound_ip_enabled = var.grafana_deterministic_outbound_ip_enabled
   zone_redundancy_enabled           = var.grafana_zone_redundancy_enabled
+  public_network_access_enabled     = var.public_network_access_enabled
   grafana_major_version             = var.grafana_major_version
   sku                               = var.grafana_sku
 
