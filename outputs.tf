@@ -12,27 +12,27 @@
 
 output "grafana_id" {
   description = "Resource ID of the managed grafana instance"
-  value       = module.grafana.id
+  value       = length(module.grafana) > 0 ? module.grafana[0].id : null
 }
 
 output "grafana_name" {
   description = "Name of the managed grafana instance"
-  value       = module.grafana.name
+  value       = length(module.grafana) > 0 ? module.grafana[0].name : null
 }
 
 output "grafana_endpoint" {
   description = "Name of the managed grafana instance"
-  value       = try(module.grafana.endpoint, null)
+  value       = length(module.grafana) > 0 ? module.grafana[0].endpoint : null
 }
 
 output "grafana_outbound_ip" {
   description = "Outbound IP of the managed grafana instance if `deterministic_outbound_ip_enabled` is true"
-  value       = try(module.grafana.outbound_ip, null)
+  value       = length(module.grafana) > 0 ? module.grafana[0].outbound_ip : null
 }
 
 output "grafana_principal_id" {
   description = "Principal ID of the managed grafana instance"
-  value       = module.grafana.principal_id
+  value       = length(module.grafana) > 0 ? module.grafana[0].principal_id : null
 }
 
 output "monitor_workspace_id" {

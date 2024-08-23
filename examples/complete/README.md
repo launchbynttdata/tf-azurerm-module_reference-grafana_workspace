@@ -33,7 +33,8 @@ No resources.
 | <a name="input_logical_product_service"></a> [logical\_product\_service](#input\_logical\_product\_service) | (Required) Name of the product service for which the resource is created.<br>    For example, backend, frontend, middleware etc. | `string` | `"redis"` | no |
 | <a name="input_class_env"></a> [class\_env](#input\_class\_env) | (Required) Environment where resource is going to be deployed. For example. dev, qa, uat | `string` | `"dev"` | no |
 | <a name="input_location"></a> [location](#input\_location) | Location where the managed grafana instance will be created | `string` | `"eastus"` | no |
-| <a name="input_grafana_name"></a> [grafana\_name](#input\_grafana\_name) | Name of the managed grafana instance | `string` | n/a | yes |
+| <a name="input_grafana_enabled"></a> [grafana\_enabled](#input\_grafana\_enabled) | Whether to deploy a managed grafana instance with the workspace | `bool` | `true` | no |
+| <a name="input_grafana_name"></a> [grafana\_name](#input\_grafana\_name) | Name of the managed grafana instance | `string` | `null` | no |
 | <a name="input_grafana_api_key_enabled"></a> [grafana\_api\_key\_enabled](#input\_grafana\_api\_key\_enabled) | Whether to enable API keys for the managed grafana instance. Defaults to false | `bool` | `false` | no |
 | <a name="input_grafana_deterministic_outbound_ip_enabled"></a> [grafana\_deterministic\_outbound\_ip\_enabled](#input\_grafana\_deterministic\_outbound\_ip\_enabled) | Whether to enable deterministic outbound IP for the managed grafana instance. Defaults to false | `bool` | `false` | no |
 | <a name="input_grafana_major_version"></a> [grafana\_major\_version](#input\_grafana\_major\_version) | Major version of Grafana to deploy | `string` | `"10"` | no |

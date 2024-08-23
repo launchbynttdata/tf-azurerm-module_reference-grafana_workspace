@@ -5,4 +5,5 @@ logical_product_service = "grafana"
 class_env               = "gotest"
 location                = "eastus"
 
-grafana_name = "launchgotestgrafana000"
+grafana_name    = "launchgotestgrafana000"
+grafana_enabled = false

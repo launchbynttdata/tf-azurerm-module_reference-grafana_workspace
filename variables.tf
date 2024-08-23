@@ -104,6 +104,7 @@ variable "class_env" {
 variable "grafana_name" {
   description = "Name of the managed grafana instance"
   type        = string
+  default     = null
 
   validation {
     condition     = can(regex("^[a-z][a-z0-9-]+[a-z0-9]$", var.grafana_name))
@@ -126,6 +127,12 @@ variable "location" {
   description = "Location where the managed grafana instance will be created"
   type        = string
   default     = "eastus"
+}
+
+variable "grafana_enabled" {
+  description = "Whether to deploy a managed grafana instance with the workspace"
+  type        = bool
+  default     = true
 }
 
 variable "grafana_api_key_enabled" {
