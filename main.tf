@@ -58,6 +58,8 @@ module "grafana" {
   source  = "terraform.registry.launch.nttdata.com/module_primitive/grafana/azurerm"
   version = "~> 1.0"
 
+  count = var.grafana_enabled ? 1 : 0
+
   name                = local.grafana_name
   resource_group_name = local.resource_group_name
   location            = var.location

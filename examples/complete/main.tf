@@ -22,6 +22,7 @@ module "grafana_workspace" {
   logical_product_service = var.logical_product_service
 
   grafana_name                              = var.grafana_name
+  grafana_enabled                           = var.grafana_enabled
   grafana_api_key_enabled                   = var.grafana_api_key_enabled
   grafana_deterministic_outbound_ip_enabled = var.grafana_deterministic_outbound_ip_enabled
   grafana_zone_redundancy_enabled           = var.grafana_zone_redundancy_enabled
