@@ -103,13 +103,13 @@ If `make check` target is successful, developer is good to commit the code to pr
 - runs `conftests`. `conftests` make sure `policy` checks are successful.
 - runs `terratest`. This is integration test suit.
 - runs `opa` tests
-<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.5.0, <= 1.5.5 |
-| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | ~>3.113 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | ~> 1.0 |
+| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | ~> 3.117.1 |
 
 ## Providers
 
@@ -119,7 +119,7 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_resource_names"></a> [resource\_names](#module\_resource\_names) | terraform.registry.launch.nttdata.com/module_library/resource_name/launch | ~> 1.0 |
+| <a name="module_resource_names"></a> [resource\_names](#module\_resource\_names) | terraform.registry.launch.nttdata.com/module_library/resource_name/launch | ~> 2.0 |
 | <a name="module_resource_group"></a> [resource\_group](#module\_resource\_group) | terraform.registry.launch.nttdata.com/module_primitive/resource_group/azurerm | ~> 1.0 |
 | <a name="module_monitor_workspace"></a> [monitor\_workspace](#module\_monitor\_workspace) | terraform.registry.launch.nttdata.com/module_primitive/monitor_workspace/azurerm | ~> 1.0 |
 | <a name="module_grafana"></a> [grafana](#module\_grafana) | terraform.registry.launch.nttdata.com/module_primitive/grafana/azurerm | ~> 1.0 |
@@ -140,6 +140,7 @@ No resources.
 | <a name="input_class_env"></a> [class\_env](#input\_class\_env) | (Required) Environment where resource is going to be deployed. For example. dev, qa, uat | `string` | `"dev"` | no |
 | <a name="input_grafana_name"></a> [grafana\_name](#input\_grafana\_name) | Name of the managed grafana instance | `string` | `null` | no |
 | <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | name of the resource group where the managed grafana instance will be created | `string` | `null` | no |
+| <a name="input_monitor_workspace_name"></a> [monitor\_workspace\_name](#input\_monitor\_workspace\_name) | Name of the Azure Monitor workspace. If null, the name will be auto-generated. | `string` | `null` | no |
 | <a name="input_location"></a> [location](#input\_location) | Location where the managed grafana instance will be created | `string` | `"eastus"` | no |
 | <a name="input_grafana_enabled"></a> [grafana\_enabled](#input\_grafana\_enabled) | Whether to deploy a managed grafana instance with the workspace | `bool` | `true` | no |
 | <a name="input_grafana_api_key_enabled"></a> [grafana\_api\_key\_enabled](#input\_grafana\_api\_key\_enabled) | Whether to enable API keys for the managed grafana instance. Defaults to false | `bool` | `false` | no |
@@ -165,4 +166,4 @@ No resources.
 | <a name="output_monitor_workspace_default_collection_endpoint_id"></a> [monitor\_workspace\_default\_collection\_endpoint\_id](#output\_monitor\_workspace\_default\_collection\_endpoint\_id) | Resource ID of the default collection endpoint associated with the monitor workspace |
 | <a name="output_monitor_workspace_default_collection_rule_id"></a> [monitor\_workspace\_default\_collection\_rule\_id](#output\_monitor\_workspace\_default\_collection\_rule\_id) | Resource ID of the default collection rule associated with the monitor workspace |
 | <a name="output_resource_group_name"></a> [resource\_group\_name](#output\_resource\_group\_name) | Name of the resource group created by this module |
-<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- END_TF_DOCS -->

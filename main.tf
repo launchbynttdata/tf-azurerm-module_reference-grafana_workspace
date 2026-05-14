@@ -12,7 +12,7 @@
 
 module "resource_names" {
   source  = "terraform.registry.launch.nttdata.com/module_library/resource_name/launch"
-  version = "~> 1.0"
+  version = "~> 2.0"
 
   for_each = var.resource_names_map
 
@@ -43,13 +43,13 @@ module "monitor_workspace" {
   source  = "terraform.registry.launch.nttdata.com/module_primitive/monitor_workspace/azurerm"
   version = "~> 1.0"
 
-  name                = module.resource_names["monitor_workspace"].standard
+  name                = local.monitor_workspace_name
   resource_group_name = local.resource_group_name
   location            = var.location
 
   public_network_access_enabled = var.public_network_access_enabled
 
-  tags = merge(local.tags, { resource_name = module.resource_names["monitor_workspace"].standard })
+  tags = merge(local.tags, { resource_name = local.monitor_workspace_name })
 
   depends_on = [module.resource_group]
 }
