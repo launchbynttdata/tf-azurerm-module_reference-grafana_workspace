@@ -116,11 +116,6 @@ variable "grafana_name" {
     condition     = can(regex("^[a-z][a-z0-9-]+[a-z0-9]$", var.grafana_name))
     error_message = "The name can only contain lowercase letters, numbers and dashes, and it must begin with a letter and end with a letter or digit."
   }
-
-  validation {
-    condition     = length(var.grafana_name) < 23 && length(var.grafana_name) > 2
-    error_message = "The name length must be from 2 to 23 characters"
-  }
 }
 
 variable "resource_group_name" {
