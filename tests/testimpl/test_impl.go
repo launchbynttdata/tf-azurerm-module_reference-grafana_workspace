@@ -89,7 +89,10 @@ func assertGrafana(
 	client, err := armdashboard.NewGrafanaClient(subscriptionId, cred, nil)
 	require.NoError(t, err, "failed to construct Grafana SDK client")
 
-	resp, err := client.Get(context.Background(), resourceGroupName, grafanaName, nil)
+	sdkCtx, cancel := context.WithTimeout(context.Background(), 2*time.Minute)
+	defer cancel()
+
+	resp, err := client.Get(sdkCtx, resourceGroupName, grafanaName, nil)
 	require.NoError(t, err, "Grafana Get call must succeed")
 
 	require.NotNil(t, resp.ID, "API response must include resource ID")
@@ -145,7 +148,10 @@ func assertMonitorWorkspace(
 	factory, err := armmonitor.NewClientFactory(subscriptionId, cred, &opts)
 	require.NoError(t, err, "failed to construct monitor client factory")
 
-	resp, err := factory.NewAzureMonitorWorkspacesClient().Get(context.Background(), resourceGroupName, workspaceName, nil)
+	mCtx, mCancel := context.WithTimeout(context.Background(), 2*time.Minute)
+	defer mCancel()
+
+	resp, err := factory.NewAzureMonitorWorkspacesClient().Get(mCtx, resourceGroupName, workspaceName, nil)
 	require.NoError(t, err, "AzureMonitorWorkspaces Get call must succeed")
 
 	require.NotNil(t, resp.ID, "monitor workspace ID must be present in API response")
@@ -162,7 +168,14 @@ func exerciseGrafanaEndpoint(t *testing.T, ctx types.TestContext) {
 	endpoint := terraform.Output(t, ctx.TerratestTerraformOptions(), "grafana_endpoint")
 	require.NotEmpty(t, endpoint, "grafana_endpoint output must be present")
 
-	client := &http.Client{Timeout: 30 * time.Second}
+	// Do not follow redirects — Azure Managed Grafana redirects unauthenticated
+	// requests to Azure AD. A redirect response is proof the endpoint is live.
+	client := &http.Client{
+		Timeout: 30 * time.Second,
+		CheckRedirect: func(req *http.Request, via []*http.Request) error {
+			return http.ErrUseLastResponse
+		},
+	}
 	resp, err := client.Get(endpoint)
 	require.NoError(t, err, "HTTP GET against Grafana endpoint must succeed")
 	defer func() { _ = resp.Body.Close() }()
