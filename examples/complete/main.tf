@@ -21,6 +21,8 @@ module "grafana_workspace" {
   logical_product_family  = var.logical_product_family
   logical_product_service = var.logical_product_service
 
+  monitor_workspace_name = var.monitor_workspace_name
+
   grafana_name                              = var.grafana_name
   grafana_enabled                           = var.grafana_enabled
   grafana_api_key_enabled                   = var.grafana_api_key_enabled

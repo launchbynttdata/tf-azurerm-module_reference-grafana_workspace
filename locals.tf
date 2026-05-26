@@ -16,6 +16,7 @@ locals {
   }
   tags = merge(local.default_tags, var.tags)
 
-  grafana_name        = var.grafana_name != null ? var.grafana_name : module.resource_names["grafana"].minimal_random_suffix_without_any_separators
-  resource_group_name = var.resource_group_name != null ? var.resource_group_name : module.resource_group[0].name
+  grafana_name           = var.grafana_name != null ? var.grafana_name : module.resource_names["grafana"].dns_compliant_minimal_random_suffix
+  resource_group_name    = var.resource_group_name != null ? var.resource_group_name : module.resource_group[0].name
+  monitor_workspace_name = var.monitor_workspace_name != null ? var.monitor_workspace_name : module.resource_names["monitor_workspace"].standard
 }
