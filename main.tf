@@ -12,11 +12,11 @@
 
 module "resource_names" {
   source  = "terraform.registry.launch.nttdata.com/module_library/resource_name/launch"
-  version = "~> 1.0"
+  version = "~> 2.0"
 
   for_each = var.resource_names_map
 
-  region                  = join("", split("-", var.location))
+  region                  = var.location
   class_env               = var.class_env
   cloud_resource_type     = each.value.name
   instance_env            = var.instance_env
@@ -24,7 +24,6 @@ module "resource_names" {
   maximum_length          = each.value.max_length
   logical_product_family  = var.logical_product_family
   logical_product_service = var.logical_product_service
-  use_azure_region_abbr   = true
 }
 
 module "resource_group" {
@@ -43,7 +42,7 @@ module "monitor_workspace" {
   source  = "terraform.registry.launch.nttdata.com/module_primitive/monitor_workspace/azurerm"
   version = "~> 1.0"
 
-  name                = module.resource_names["monitor_workspace"].standard
+  name                = local.monitor_workspace_name
   resource_group_name = local.resource_group_name
   location            = var.location
 
@@ -56,7 +55,7 @@ module "monitor_workspace" {
 
 module "grafana" {
   source  = "terraform.registry.launch.nttdata.com/module_primitive/grafana/azurerm"
-  version = "~> 1.0"
+  version = "~> 2.0"
 
   count = var.grafana_enabled ? 1 : 0
 
