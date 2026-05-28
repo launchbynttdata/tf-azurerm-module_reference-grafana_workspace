@@ -40,10 +40,10 @@ func TestGrafanaWorkspace(t *testing.T, ctx types.TestContext) {
 	exerciseGrafanaEndpoint(t, ctx)
 }
 
-// TestGrafanaWorkspaceReadonly is the read-only post-deploy test. It verifies
+// TestComposableGrafanaWorkspaceReadonly is the read-only post-deploy test. It verifies
 // Terraform outputs and asserts both resources via the Azure SDK without
 // exercising the data plane or performing any write operations.
-func TestGrafanaWorkspaceReadonly(t *testing.T, ctx types.TestContext) {
+func TestComposableGrafanaWorkspaceReadonly(t *testing.T, ctx types.TestContext) {
 	assertDeployment(t, ctx)
 }
 
